@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr-FR" class="scroll-smooth">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Enry Lony — Généalogiste Successorale</title>
+    <meta content="Généalogiste professionnelle et fondatrice du cabinet Familles et Patrimoines." name="description"/>
+    
+    <!-- Fonts: 'Space Grotesk' for modern headers, 'Inter' for clean reading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Alpine.js for interactivity (Tabs, Accordions) -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            400: '#d4af37',
+                            500: '#c5a028',
+                            600: '#b08d1e',
+                        },
+                        dark: {
+                            900: '#121212',
+                            800: '#1e1e1e',
+                            700: '#2d2d2d',
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth reveal animation classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Hide scrollbar for clean look in overflow containers */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-dark-800 antialiased overflow-x-hidden" x-data="{ mobileMenuOpen: false }">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full top-0 z-50 transition-all duration-300" :class="{ 'bg-white/90 backdrop-blur-md shadow-sm py-2': true }">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <img src="images/logo.png" alt="Logo" class="h-10 w-auto object-contain group-hover:scale-105 transition-transform">
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-dark-700">
+                    <a href="#expertise" class="hover:text-gold-600 transition-colors">L'Étude</a>
+                    <a href="#services" class="hover:text-gold-600 transition-colors">Services</a>
+                    <a href="#media" class="hover:text-gold-600 transition-colors">Média</a>
+                    <a href="#contact" class="px-5 py-2.5 bg-dark-900 text-white rounded-full hover:bg-gold-600 transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg shadow-gold-500/20">
+                        Me contacter
+                    </a>
+                </div>
+
+                <!-- Mobile Button -->
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 text-dark-900">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-0 right-0 w-[50vw] h-[50vw] bg-gold-400/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full grid lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Text Content -->
+            <div class="lg:col-span-7 relative z-10 space-y-8">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-stone-200 shadow-sm text-xs font-semibold uppercase tracking-wider text-gold-600 mb-4 reveal">
+                    <span class="w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
+                    Cabinet Familles et Patrimoines
+                </div>
+                
+                <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] text-dark-900 reveal delay-100">
+                    Votre héritage a<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-600 to-amber-700">une histoire.</span>
+                </h1>
+                
+                <p class="text-lg sm:text-xl text-dark-700 font-light max-w-xl leading-relaxed reveal delay-200">
+                    Je suis <strong>Enry Lony</strong>, généalogiste successorale et expert judiciaire. Je dénoue les fils du passé pour sécuriser votre avenir.
+                </p>
+
+                <div class="flex flex-wrap gap-4 pt-4 reveal delay-300">
+                    <a href="#services" class="group relative px-8 py-4 bg-dark-900 text-white rounded-full overflow-hidden transition-all hover:shadow-xl hover:shadow-gold-500/20">
+                        <div class="absolute inset-0 w-full h-full bg-gold-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
+                        <span class="relative font-medium flex items-center gap-2">
+                            Découvrir mes services <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </span>
+                    </a>
+                    <a href="tel:+596696262478" class="px-8 py-4 bg-white border border-stone-200 text-dark-900 rounded-full font-medium hover:bg-stone-50 transition-colors">
+                        Appelez-moi
+                    </a>
+                </div>
+
+                <!-- Trust Badges (Ticker style) -->
+                <div class="pt-12 border-t border-stone-200/60 flex flex-wrap gap-x-8 gap-y-4 text-xs font-semibold text-stone-500 uppercase tracking-wide reveal delay-500">
+                    <span class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-gold-500"></i> Expert Judiciaire</span>
+                    <span class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-gold-500"></i> Généalogistes de France</span>
+                    <span class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-gold-500"></i> SIAF Certifié</span>
+                </div>
+            </div>
+
+            <!-- Visual Content (Photo Enry Lony) - Visible on ALL screens now -->
+            <div class="lg:col-span-5 relative reveal delay-300 mt-12 lg:mt-0">
+                <div class="relative z-10 rounded-[2rem] overflow-hidden shadow-2xl shadow-stone-300/50 rotate-3 transition-transform hover:rotate-0 duration-700">
+                    <img src="images/enry-lony.png" alt="Enry Lony Portrait" class="w-full h-auto object-cover transform scale-105 hover:scale-100 transition-transform duration-700">
+                    
+                    <!-- Floating Stat Card -->
+                    <div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-6 rounded-xl border border-white/20 shadow-lg hidden sm:block">
+                        <div class="flex justify-between text-center">
+                            <div>
+                                <div class="text-2xl font-display font-bold text-dark-900">24</div>
+                                <div class="text-[10px] uppercase tracking-wider text-stone-500">Ans d'exp.</div>
+                            </div>
+                            <div class="w-px bg-stone-200"></div>
+                            <div>
+                                <div class="text-2xl font-display font-bold text-dark-900">823</div>
+                                <div class="text-[10px] uppercase tracking-wider text-stone-500">Dossiers</div>
+                            </div>
+                            <div class="w-px bg-stone-200"></div>
+                            <div>
+                                <div class="text-2xl font-display font-bold text-dark-900">6.2k</div>
+                                <div class="text-[10px] uppercase tracking-wider text-stone-500">Héritiers</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Decorative Frame -->
+                <div class="absolute inset-0 border-2 border-gold-500/30 rounded-[2rem] -z-10 translate-x-4 translate-y-4"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section with TOGGLE (The fluidity key) -->
+    <section id="services" class="py-24 bg-white relative" x-data="{ userType: 'notaire' }">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="font-display text-4xl font-bold mb-6">À qui s'adresse mon expertise ?</h2>
+                <p class="text-stone-600 mb-8">
+                    Chaque situation est unique. Sélectionnez votre profil pour découvrir comment je peux vous aider.
+                </p>
+                
+                <!-- The Toggle Switch -->
+                <div class="inline-flex bg-stone-100 p-1.5 rounded-full relative">
+                    <!-- Background slider -->
+                    <div class="absolute inset-y-1.5 w-1/2 bg-white shadow-sm rounded-full transition-all duration-300 ease-out"
+                         :class="userType === 'notaire' ? 'left-1.5' : 'left-[calc(50%-0.375rem)]'"></div>
+                    
+                    <button @click="userType = 'notaire'" 
+                            class="relative z-10 px-8 py-3 rounded-full text-sm font-semibold transition-colors duration-300 w-40"
+                            :class="userType === 'notaire' ? 'text-dark-900' : 'text-stone-500 hover:text-dark-700'">
+                        Je suis Notaire
+                    </button>
+                    <button @click="userType = 'particulier'" 
+                            class="relative z-10 px-8 py-3 rounded-full text-sm font-semibold transition-colors duration-300 w-40"
+                            :class="userType === 'particulier' ? 'text-dark-900' : 'text-stone-500 hover:text-dark-700'">
+                        Je suis Particulier
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content Container -->
+            <div class="grid lg:grid-cols-2 gap-16 items-center min-h-[400px]">
+                <!-- Dynamic Text Side -->
+                <div class="reveal">
+                    <!-- Notaire Content -->
+                    <div x-show="userType === 'notaire'" 
+                         x-transition:enter="transition ease-out duration-300"
+                         x-transition:enter-start="opacity-0 translate-x-[-20px]"
+                         x-transition:enter-end="opacity-100 translate-x-0"
+                         class="space-y-6">
+                        <div class="inline-block p-3 rounded-xl bg-indigo-50 text-indigo-900 mb-2">
+                            <i data-lucide="scale" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="font-display text-3xl font-bold text-dark-900">Le partenaire technique de vos dossiers complexes.</h3>
+                        <p class="text-lg text-stone-600 leading-relaxed">
+                            Bénéficiez d’une expertise de plus de 20 ans pour sécuriser vos actes. Mon intervention est cruciale pour authentifier les dévolutions et localiser les ayants droit.
+                        </p>
+                        <ul class="space-y-4 pt-4">
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3.5 h-3.5 text-indigo-600"></i></div>
+                                <span class="text-dark-700">Doute subsistant sur une filiation</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3.5 h-3.5 text-indigo-600"></i></div>
+                                <span class="text-dark-700">Héritiers connus mais à localiser</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3.5 h-3.5 text-indigo-600"></i></div>
+                                <span class="text-dark-700">Recherche complète d'héritiers inconnus</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Particulier Content -->
+                    <div x-show="userType === 'particulier'" style="display: none;"
+                         x-transition:enter="transition ease-out duration-300"
+                         x-transition:enter-start="opacity-0 translate-x-[20px]"
+                         x-transition:enter-end="opacity-100 translate-x-0"
+                         class="space-y-6">
+                        <div class="inline-block p-3 rounded-xl bg-gold-50 text-gold-700 mb-2">
+                            <i data-lucide="users" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="font-display text-3xl font-bold text-dark-900">Débloquez votre situation familiale.</h3>
+                        <p class="text-lg text-stone-600 leading-relaxed">
+                            Vous êtes dans l'impasse ? Je vous aide à prouver vos droits, à compléter l'arbre généalogique et à sortir de l'indivision foncière.
+                        </p>
+                        <ul class="space-y-4 pt-4">
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-gold-100 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600"></i></div>
+                                <span class="text-dark-700">Recherche d'ancêtres & racines</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-gold-100 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600"></i></div>
+                                <span class="text-dark-700">Sortie d'indivision foncière</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-gold-100 flex items-center justify-center flex-shrink-0 mt-0.5"><i data-lucide="check" class="w-3.5 h-3.5 text-gold-600"></i></div>
+                                <span class="text-dark-700">Preuve de qualité héréditaire</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Decorative Image Side -->
+                <div class="relative h-full min-h-[400px] bg-stone-100 rounded-3xl overflow-hidden reveal delay-200">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Documents juridiques" 
+                         class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-multiply transition-opacity duration-500"
+                         :class="userType === 'notaire' ? 'opacity-60' : 'opacity-0'">
+                    
+                    <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Famille réunion" 
+                         class="absolute inset-0 w-full h-full object-cover opacity-0 mix-blend-multiply transition-opacity duration-500"
+                         :class="userType === 'particulier' ? 'opacity-60' : 'opacity-0'">
+                    
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent"></div>
+                    
+                    <div class="absolute bottom-8 left-8 right-8 text-white">
+                        <p class="font-serif italic text-xl" x-text="userType === 'notaire' ? '« La sécurité juridique avant tout. »' : '« Retrouver ses racines, c\'est se retrouver soi-même. »'"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Did You Know / Bio Highlights (Grid Layout) -->
+    <section id="expertise" class="py-24 bg-stone-900 text-stone-200 relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-0 left-1/2 w-full h-full bg-dark-800 -skew-x-12 -z-10 origin-top"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <!-- Bio Text -->
+                <div class="space-y-8 reveal">
+                    <h2 class="font-display text-4xl font-bold text-white">Au-delà de la recherche,<br>une expertise juridique.</h2>
+                    <div class="prose prose-invert prose-lg text-stone-400">
+                        <p>
+                            Le généalogiste n'est pas qu'un historien, c'est un <strong>professionnel du droit</strong>. Je maîtrise les subtilités successorales (fente, représentation) qui peuvent bloquer un dossier pendant des années.
+                        </p>
+                        <p>
+                            Grâce à mes dérogations SIAF, j'accède là où d'autres s'arrêtent.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-6 pt-4">
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                            <div class="text-3xl font-display font-bold text-gold-500 mb-1">1998</div>
+                            <div class="text-xs uppercase tracking-wider text-stone-500">Début d'activité</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                            <div class="text-3xl font-display font-bold text-gold-500 mb-1">Caraïbe</div>
+                            <div class="text-xs uppercase tracking-wider text-stone-500">Zone d'expertise</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video / Media Block (Photo réintégrée en petit à côté ou au dessus de la vidéo) -->
+                <div class="relative reveal delay-200">
+                    <div class="rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                         <iframe width="100%" height="350" src="https://youtu.be/Kl3R5sNf6X4?si=fV592f6Kq7z_W0Kq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full object-cover"></iframe>
+                    </div>
+                    <div class="mt-4 flex items-center gap-4 text-sm text-stone-400">
+                        <span class="w-8 h-px bg-gold-500"></span>
+                        <p>Reportage La Réunion 1ère : L'importance de la généalogie.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ & Testimonials (Accordion Style) -->
+    <section id="faq" class="py-24 bg-stone-50">
+        <div class="max-w-3xl mx-auto px-6 lg:px-8">
+            <h2 class="font-display text-4xl font-bold text-center mb-16">Questions & Retours</h2>
+
+            <!-- Accordion FAQ -->
+            <div class="space-y-4 mb-20" x-data="{ active: null }">
+                <!-- Item 1 -->
+                <div class="bg-white rounded-2xl p-1 shadow-sm border border-stone-100 reveal">
+                    <button @click="active === 1 ? active = null : active = 1" class="flex justify-between items-center w-full p-5 text-left">
+                        <span class="font-display font-bold text-dark-900">Pourquoi un notaire fait-il appel à moi ?</span>
+                        <i :class="active === 1 ? 'rotate-180' : ''" data-lucide="chevron-down" class="w-5 h-5 text-stone-400 transition-transform duration-300"></i>
+                    </button>
+                    <div x-show="active === 1" x-collapse>
+                        <div class="p-5 pt-0 text-stone-600 leading-relaxed border-t border-stone-100 mt-2">
+                            Le notaire a recours à un généalogiste en cas d’incertitudes de filiation ou d’impossibilité technique. S’il ne fait pas appel à un professionnel, la succession risque d’être dévolue aux mauvais héritiers.
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="bg-white rounded-2xl p-1 shadow-sm border border-stone-100 reveal delay-100">
+                    <button @click="active === 2 ? active = null : active = 2" class="flex justify-between items-center w-full p-5 text-left">
+                        <span class="font-display font-bold text-dark-900">Pourquoi ne pas chercher soi-même ?</span>
+                        <i :class="active === 2 ? 'rotate-180' : ''" data-lucide="chevron-down" class="w-5 h-5 text-stone-400 transition-transform duration-300"></i>
+                    </button>
+                    <div x-show="active === 2" x-collapse>
+                        <div class="p-5 pt-0 text-stone-600 leading-relaxed border-t border-stone-100 mt-2">
+                             La recherche est un métier à part entière. Un notaire n’a ni les moyens, ni l’expertise pour des recherches fouillées. Je dispose d'autorisations administratives spécifiques.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials Slider (Simplified visual) -->
+            <div class="relative bg-white rounded-3xl p-8 shadow-lg border border-stone-100 reveal">
+                <i data-lucide="quote" class="absolute top-8 left-8 w-10 h-10 text-gold-100 fill-current"></i>
+                <div class="relative z-10 text-center">
+                    <p class="text-xl font-medium text-dark-800 italic mb-6">"Sans Mme Lony, notre famille se serait certainement disloquée. Elle a retrouvé un demi-frère dont nous ignorions l'existence."</p>
+                    <div class="flex items-center justify-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center font-bold text-stone-500">R</div>
+                        <div class="text-left">
+                            <div class="font-bold text-sm text-dark-900">Roger B.</div>
+                            <div class="text-xs text-stone-500">Le Carbet, Martinique</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="relative py-24 bg-dark-900 text-white overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-gold-600/20 rounded-full blur-[120px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-16">
+                <!-- Info Side -->
+                <div class="lg:col-span-5 space-y-10">
+                    <div>
+                        <h2 class="font-display text-4xl font-bold mb-4">Parlons de votre dossier.</h2>
+                        <p class="text-stone-400">Premier échange confidentiel.</p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                        <h3 class="font-display font-bold text-lg mb-1">Étude Familles et Patrimoines</h3>
+                        <p class="text-gold-500 text-sm mb-4">par Enry Lony</p>
+                        
+                        <div class="space-y-4 text-sm text-stone-300">
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-gold-500 shrink-0"></i>
+                                <span>Immeuble du Port<br>8 Avenue Maurice Bishop<br>97200 Fort-de-France, MARTINIQUE</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="phone" class="w-5 h-5 text-gold-500 shrink-0"></i>
+                                <div class="space-y-1">
+                                    <a href="tel:+596696262478" class="block hover:text-white transition-colors">+596 696 26 24 78 (Port)</a>
+                                    <a href="tel:+596596578473" class="block hover:text-white transition-colors">+596 596 57 84 73 (Fixe)</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="mail" class="w-5 h-5 text-gold-500 shrink-0"></i>
+                                <a href="mailto:contact@enrylony.com" class="hover:text-white transition-colors">contact@enrylony.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Side -->
+                <div class="lg:col-span-7">
+                    <form class="bg-white text-dark-900 rounded-3xl p-8 lg:p-10 shadow-2xl">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div class="col-span-full md:col-span-1">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">Vous êtes</label>
+                                <select class="w-full bg-stone-50 border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-gold-500/50 transition-all">
+                                    <option>Particulier</option>
+                                    <option>Notaire</option>
+                                    <option>Autre</option>
+                                </select>
+                            </div>
+                            <div class="col-span-full md:col-span-1">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">Nom & Prénom</label>
+                                <input type="text" class="w-full bg-stone-50 border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-gold-500/50 transition-all">
+                            </div>
+                            <div class="col-span-full md:col-span-1">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">Email</label>
+                                <input type="email" class="w-full bg-stone-50 border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-gold-500/50 transition-all">
+                            </div>
+                            <div class="col-span-full md:col-span-1">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">Téléphone</label>
+                                <input type="tel" class="w-full bg-stone-50 border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-gold-500/50 transition-all">
+                            </div>
+                            <div class="col-span-full">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">Message</label>
+                                <textarea rows="3" class="w-full bg-stone-50 border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-gold-500/50 transition-all"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 mb-8">
+                            <input type="checkbox" id="rgpd" class="mt-1 w-4 h-4 text-gold-600 rounded border-stone-300 focus:ring-gold-500">
+                            <label for="rgpd" class="text-xs text-stone-500 leading-snug">
+                                J'autorise Enry LONY à conserver mes données personnelles. J'accepte la Politique de confidentialité.
+                            </label>
+                        </div>
+
+                        <button class="w-full py-4 bg-dark-900 text-white font-bold rounded-xl hover:bg-gold-600 transition-colors shadow-lg">
+                            Envoyer ma demande
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with Collapsible Legal Text to save visual space -->
+    <footer class="bg-dark-900 text-stone-500 py-12 border-t border-white/5 text-sm" x-data="{ showLegal: false }">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <p>&copy; 2025 Enry Lony. Tous droits réservés.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <button @click="showLegal = !showLegal" class="hover:text-white transition-colors flex items-center gap-2">
+                        <span>Mentions Légales & RGPD</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform" :class="showLegal ? 'rotate-180' : ''"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Legal Text Area (Hidden by default to keep it clean) -->
+            <div x-show="showLegal" x-collapse>
+                <div class="p-6 rounded-2xl bg-white/5 text-xs text-justify leading-relaxed space-y-2 mb-8 border border-white/5">
+                    <p>Conformément à la loi « Informatique et Libertés » du 6 janvier 1978 modifiée et au Règlement européen n°2016/679 du 27 avril 2016, l’ETUDE FAMILLE ET PATRIMOINE en sa qualité de Responsable de traitement recueille des données personnelles destinées à la gestion de l’activité de généalogie successorale, notamment de recherche d’héritiers et dans le cadre de l’établissement de mesures précontractuelles.</p>
+                    <p>Les données collectées seront communiquées aux notaires desquels le cabinet a reçu le mandat et à certaines administrations.</p>
+                    <p>Les données sont conservées pendant toute la durée nécessaire à l’accomplissement des objectifs définis.</p>
+                    <p>Vous pouvez accéder aux données vous concernant, les rectifier, demander leur effacement, exercer votre droit à la limitation du traitement de vos données ou votre droit à la portabilité de vos données. Vous pouvez également vous opposer au traitement de vos données. Enfin vous pouvez disposer du sort de vos données après votre décès.</p>
+                    <p>Pour exercer ces droits ou pour toute question sur le traitement de vos données dans ce dispositif, vous pouvez contacter L’ETUDE FAMILLE ET PATRIMOINE par courrier postal au 8 AVENUE MAURICE BISHOP 97200 – 97200 FORT-DE-FRANCE ou par courriel au contact@enrylony.com.</p>
+                    <p>L’Etude a désigné un délégué à la protection des données : la société The Neoshields (Groupe Data Privacy Management System), 1200 Av. Maurice Donat, 06250 Mougins.</p>
+                    <p>Si vous estimez, après nous avoir contactés, que vos droits « Informatique et Libertés » ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.</p>
+                </div>
+            </div>
+            
+            <div class="text-center text-xs opacity-50">
+                <a href="https://www.xperienceweb.fr" target="_blank" class="hover:text-white transition-colors">Une réalisation XPERIENCE WEB</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Init Scripts -->
+    <script>
+        lucide.createIcons();
+
+        // Simple Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
